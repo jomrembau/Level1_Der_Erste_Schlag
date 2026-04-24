@@ -19,6 +19,8 @@ public class Main {
         int playerBlock = 0;
         int enemyBlock = 0;
         boolean continueGame = true;
+        Character attacker = player;
+        Character defender = enemy;
 
         while (continueGame) {
             playerStats(playerName, player.getLebensPunkte(), player.getAusdauer(), player.getInventar());
@@ -38,22 +40,22 @@ public class Main {
             switch (playerMove) {
                 case 1:
                     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                    if (player.getAusdauer() >= 5) {
-                        player.setAusdauer(player.getAusdauer() - 5);
+                    if (attacker.getAusdauer() >= 5) {
+                        attacker.setAusdauer(attacker.getAusdauer() - 5);
                         if (enemyBlock == 0) {
-                            enemy.setLebensPunkte(enemy.getLebensPunkte() - 10);
+                            defender.setLebensPunkte(defender.getLebensPunkte() - 10);
                         } else {
-                            enemy.setLebensPunkte(enemy.getLebensPunkte() - 5);
+                            defender.setLebensPunkte(defender.getLebensPunkte() - 5);
                         }
                     } else {
                         System.out.println(playerName + " does not have enough stamina.");
                     }
-                    
+                    enemyBlock = 0;
                     break;
 
                 case 2:
                     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                    System.out.println(playerName + "will absorb 50% of damage on next attack.");
+                    System.out.println(playerName + " will absorb 50% of damage on next attack.");
                     playerBlock = 1;
                     break;
 
