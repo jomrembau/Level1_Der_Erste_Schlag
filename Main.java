@@ -42,20 +42,23 @@ public class Main {
                     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                     if (attacker.getAusdauer() >= 5) {
                         attacker.setAusdauer(attacker.getAusdauer() - 5);
+                        System.out.println("\n" + playerName + " attacks. Spent 5 stamina.");
                         if (enemyBlock == 0) {
                             defender.setLebensPunkte(defender.getLebensPunkte() - 10);
+                            System.out.println(enemy.getName() + " took 10 damage.\n");
                         } else {
                             defender.setLebensPunkte(defender.getLebensPunkte() - 5);
+                            System.out.println(enemy.getName() + " blocks 50% damage. -5 health. \n");
                         }
                     } else {
-                        System.out.println(playerName + " does not have enough stamina.");
+                        System.out.println("\n" + playerName + " does not have enough stamina.\n");
                     }
                     enemyBlock = 0;
                     break;
 
                 case 2:
                     System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-                    System.out.println(playerName + " will absorb 50% of damage on next attack.");
+                    System.out.println("\n" + playerName + " prepares to block");
                     playerBlock = 1;
                     break;
 
