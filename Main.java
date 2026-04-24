@@ -16,17 +16,56 @@ public class Main {
         System.out.println("Press Enter to Continue.");
         scan.nextLine();
         
+        int playerBlock = 0;
+        int enemyBlock = 0;
         boolean continueGame = true;
 
         while (continueGame) {
             playerStats(playerName, player.getLebensPunkte(), player.getAusdauer(), player.getInventar());
             enemyStats("Dark Spiegel", enemy.getLebensPunkte(), enemy.getAusdauer(), enemy.getInventar());
             
-            System.out.println("\nWhat do you want to do?");
-            System.out.println("[1] Attack.");
-            System.out.println("[2] Block.");
-            System.out.println("[3] Use Potion");
-            continueGame = false;
+            int playerMove = 0;
+
+            while (playerMove < 1 || playerMove >3) {
+
+                System.out.println("\nWhat do you want to do?");
+                System.out.println("[1] Attack.");
+                System.out.println("[2] Block.");
+                System.out.println("[3] Use Potion. ");
+                playerMove = scan.nextInt();
+            }
+
+            switch (playerMove) {
+                case 1:
+                    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                    if (player.getAusdauer() >= 5) {
+                        player.setAusdauer(player.getAusdauer() - 5);
+                        if (enemyBlock == 0) {
+                            enemy.setLebensPunkte(enemy.getLebensPunkte() - 10);
+                        } else {
+                            enemy.setLebensPunkte(enemy.getLebensPunkte() - 5);
+                        }
+                    } else {
+                        System.out.println(playerName + " does not have enough stamina.");
+                    }
+                    
+                    break;
+
+                case 2:
+                    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                    System.out.println(playerName + "will absorb 50% of damage on next attack.");
+                    playerBlock = 1;
+                    break;
+
+                case 3:
+                    
+                    break;
+            
+                default:
+                    System.out.println("Error");
+                    break;
+
+            }
         }
         
 
@@ -45,5 +84,6 @@ public class Main {
         System.out.println("Stamina: " + stamina);
         System.out.println("Inventory: " + Arrays.toString(inventory));
     }
+
 }
 
