@@ -54,6 +54,10 @@ public class Main {
                         System.out.println("\n" + playerName + " does not have enough stamina.\n");
                     }
                     enemyBlock = 0;
+
+                    if (defender.getLebensPunkte() <= 0) {
+                        playerWins();
+                    }
                     break;
 
                 case 2:
@@ -88,6 +92,10 @@ public class Main {
         System.out.println("Health: " + health);
         System.out.println("Stamina: " + stamina);
         System.out.println("Inventory: " + Arrays.toString(inventory));
+    }
+
+    public static void playerWins() {
+        System.out.println("\nWith one final strike, Dark Spiegel fades into nothing. You have defeated your own reflection.");
     }
 
 }
