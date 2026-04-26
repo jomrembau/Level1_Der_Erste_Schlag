@@ -57,6 +57,8 @@ public class Main {
 
                     if (defender.getLebensPunkte() <= 0) {
                         playerWins();
+                        continueGame = false;
+                        System.exit(0);
                     }
                     break;
 
@@ -73,11 +75,57 @@ public class Main {
                 default:
                     System.out.println("Error");
                     break;
-
             }
-        }
-        
+            
+            if (!continueGame) {
+                break;
+}
+            attacker = enemy;
+            defender = player;
+            int enemyMove = randomNumber();
 
+            switch (enemyMove) {
+                case 1:
+                    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                    if (attacker.getAusdauer() >= 5) {
+                        attacker.setAusdauer(attacker.getAusdauer() - 5);
+                        System.out.println("\n" + enemy.getName() + " attacks. Spent 5 stamina.");
+                        if (playerBlock == 0) {
+                            defender.setLebensPunkte(defender.getLebensPunkte() - 10);
+                            System.out.println(playerName + " took 10 damage.\n");
+                        } else {
+                            defender.setLebensPunkte(defender.getLebensPunkte() - 5);
+                            System.out.println(playerName + " blocks 50% damage. -5 health. \n");
+                        }
+                    } else {
+                        System.out.println("\n" + enemy.getName() + " does not have enough stamina.\n");
+                    }
+                    playerBlock = 0;
+
+                    if (defender.getLebensPunkte() <= 0) {
+                        enemyWins();
+                        continueGame = false;
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                    System.out.println("\n" + enemy.getName() + " prepares to block");
+                    enemyBlock = 1;
+                    break;
+
+                case 3:
+                    
+                    break;
+            
+                default:
+                    System.out.println("Error");
+                    break;
+            }
+
+            attacker = player;
+            defender = enemy;
+        }
         scan.close();
     }
     public static void playerStats(String name, int health, int stamina, String[] inventory) {
@@ -96,6 +144,18 @@ public class Main {
 
     public static void playerWins() {
         System.out.println("\nWith one final strike, Dark Spiegel fades into nothing. You have defeated your own reflection.");
+    }
+
+    public static void enemyWins() {
+        System.out.println("\nYou try to stand, but your strength fades.");
+        System.out.println("Your mirror image watches silently as you fall.");
+        System.out.println("Dark Spiegel has defeated you.");
+        System.out.println("Game Over.");
+    }
+
+    public static int randomNumber() {
+        double value = Math.random() * 3;
+        return (int)(value + 1);
     }
 
 }
