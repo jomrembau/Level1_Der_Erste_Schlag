@@ -58,7 +58,6 @@ public class Main {
                     if (defender.getLebensPunkte() <= 0) {
                         playerWins();
                         continueGame = false;
-                        System.exit(0);
                     }
                     break;
 
@@ -76,10 +75,11 @@ public class Main {
                     System.out.println("Error");
                     break;
             }
-            
+
             if (!continueGame) {
                 break;
-}
+            }         
+              
             attacker = enemy;
             defender = player;
             int enemyMove = randomNumber();
@@ -136,7 +136,7 @@ public class Main {
     }
 
     public static void enemyStats(String name, int health, int stamina, String[] inventory) {
-        System.out.println("\nPlayer: " + name);
+        System.out.println("\nEnemy: " + name);
         System.out.println("Health: " + health);
         System.out.println("Stamina: " + stamina);
         System.out.println("Inventory: " + Arrays.toString(inventory));
