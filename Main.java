@@ -68,6 +68,71 @@ public class Main {
                     break;
 
                 case 3:
+                    System.out.println("\nInventory:");
+                    System.out.println("1. Health Potion");
+                    System.out.println("2. Stamina Potion");
+
+                    System.out.println("What do you want to use? (1/2): ");
+                    int usePotion = scan.nextInt();
+
+                    while (usePotion < 1 || usePotion >2) {
+                        System.out.println("What do you want to use? (1/2): ");
+                        usePotion = scan.nextInt();
+                    }
+
+                    switch (usePotion) {
+                        case 1:
+                            boolean foundHealthPotion = false;
+                            for (int i = 0; i < player.getInventar().length; i++ ) {
+                                if (player.getInventar()[i].equals("Heiltrank")) {
+                                    foundHealthPotion = true;
+                                    player.getInventar()[i] = "empty";
+                                    player.setLebensPunkte(player.getLebensPunkte() + 25);
+                                    break;
+                                }
+                            }
+                            if (foundHealthPotion) {
+                                System.out.println("\n" + playerName + " used a healing potion. +25 Health.");
+                                System.out.println("Press enter to continue.");
+                                scan.nextLine();
+                                scan.nextLine(); 
+                            } else {
+                                System.out.println("You have no healing potion in your inventory. You lose a turn.");
+                                scan.nextLine();
+                                scan.nextLine(); 
+                            }
+                            
+                            break;
+
+                        case 2:
+
+                            boolean foundStaminaPotion = false;
+                            for (int i = 0; i < player.getInventar().length; i++ ) {
+                                if (player.getInventar()[i].equals("Ausdauertrank")) {
+                                    foundStaminaPotion = true;
+                                    player.getInventar()[i] = "empty";
+                                    player.setAusdauer((player.getAusdauer() + 15));
+                                    break;
+                                }
+                            }
+                            if (foundStaminaPotion) {
+                                System.out.println("\n" + playerName + " used a Stamina potion. +15 Stamina.");
+                                System.out.println("Press enter to continue.");
+                                scan.nextLine();
+                                scan.nextLine(); 
+                            } else {
+                                System.out.println("You have no Stamina potion in your inventory. You lose a turn.");
+                                scan.nextLine();
+                                scan.nextLine(); 
+                            }
+                            
+                            break;
+                            
+                    
+                        default:
+                            System.out.println("Potion error?");
+                            break;
+                    }
                     
                     break;
             
@@ -116,6 +181,7 @@ public class Main {
 
                 case 3:
                     
+
                     break;
             
                 default:
