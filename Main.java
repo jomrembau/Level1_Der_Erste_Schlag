@@ -180,10 +180,10 @@ public class Main {
                     break;
 
                 case 3:
-                    int enemyPotion = randomNumberPotion();
+                    int foundEnemyHealthPotion = randomNumberPotion();
                     boolean enemyHealthPotion = false; 
 
-                    switch (enemyPotion) {
+                    switch (foundEnemyHealthPotion) {
                         case 1:
                             for (int i =0; i < enemy.getInventar().length; i++) {
                                 if (enemy.getInventar()[i].equals("Heiltrank")) {
@@ -197,22 +197,42 @@ public class Main {
                                 System.out.println("\n" + enemy.getName() + " used a health potion. +25 Health.");
                                 System.out.println("Press Enter to continue.");
                                 scan.nextLine(); 
+                                scan.nextLine(); 
                             } else {
                                 System.out.println("\n" + enemy.getName() + " tried to use a health potion, but has none left. Turn skipped.");
+                                scan.nextLine(); 
                                 scan.nextLine(); 
                             }
                             break;
                         
                         case 2:
+
+                            int foundEnemyStaminaPotion = randomNumberPotion();
+                            boolean enemyStaminaPotion = false; 
                             
+                            for (int i =0; i < enemy.getInventar().length; i++) {
+                                if (enemy.getInventar()[i].equals("Ausdauertrank")) {
+                                    enemyStaminaPotion = true;
+                                    enemy.getInventar()[i] = "empty";
+                                    enemy.setAusdauer(enemy.getAusdauer() + 15);
+                                    break;
+                                }
+                            }
+                            if (enemyStaminaPotion) {
+                                System.out.println("\n" + enemy.getName() + " used a Stamina potion. +15 Stamina.");
+                                System.out.println("Press Enter to continue.");
+                                scan.nextLine(); 
+                                scan.nextLine(); 
+                            } else {
+                                System.out.println("\n" + enemy.getName() + " tried to use a Stamina potion, but has none left. Turn skipped.");
+                                scan.nextLine(); 
+                                scan.nextLine(); 
+                            }
                             break;
                     
                         default:
                             break;
                     }
-
-
-                    
 
                     break;
             
