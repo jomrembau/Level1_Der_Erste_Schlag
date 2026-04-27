@@ -180,6 +180,38 @@ public class Main {
                     break;
 
                 case 3:
+                    int enemyPotion = randomNumberPotion();
+                    boolean enemyHealthPotion = false; 
+
+                    switch (enemyPotion) {
+                        case 1:
+                            for (int i =0; i < enemy.getInventar().length; i++) {
+                                if (enemy.getInventar()[i].equals("Heiltrank")) {
+                                    enemyHealthPotion = true;
+                                    enemy.getInventar()[i] = "empty";
+                                    enemy.setLebensPunkte(enemy.getLebensPunkte() + 25);
+                                    break;
+                                }
+                            }
+                            if (enemyHealthPotion) {
+                                System.out.println("\n" + enemy.getName() + " used a health potion. +25 Health.");
+                                System.out.println("Press Enter to continue.");
+                                scan.nextLine(); 
+                            } else {
+                                System.out.println("\n" + enemy.getName() + " tried to use a health potion, but has none left. Turn skipped.");
+                                scan.nextLine(); 
+                            }
+                            break;
+                        
+                        case 2:
+                            
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+
                     
 
                     break;
@@ -221,6 +253,11 @@ public class Main {
 
     public static int randomNumber() {
         double value = Math.random() * 3;
+        return (int)(value + 1);
+    }
+
+    public static int randomNumberPotion() {
+        double value = Math.random() * 2;
         return (int)(value + 1);
     }
 
